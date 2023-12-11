@@ -14,7 +14,6 @@ public class OuttakeCone extends CommandBase {
 
   public OuttakeCone(Manipulator manipulator) {
     m_manipulator = manipulator;
-    // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(manipulator);
   }
 
@@ -26,7 +25,9 @@ public class OuttakeCone extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute() {
+    
+  }
 
   // Called once the command ends or is interrupted.
   @Override

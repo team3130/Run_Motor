@@ -88,6 +88,9 @@ public class RobotContainer {
     //new POVButton(m_WeaponsGamepad, Constants.XBOXButtons.LST_POV_S).whileTrue(new DumbRetract(m_extension, this));
     new JoystickButton(m_WeaponsGamepad, 3).whileTrue(new IntakeCone(getManipulator()));
     new JoystickButton(m_WeaponsGamepad, 5).whileTrue(new OuttakeCone(getManipulator()));
+    // ADD BUTTON BINDINGS HERE (Intake Cube: 4 and Outtake Cube: 6)
+
+
   }
 
   /**

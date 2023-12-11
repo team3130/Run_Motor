@@ -12,14 +12,9 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import frc.robot.Constants;
 
 public class Manipulator extends SubsystemBase {
-
   private final WPI_TalonSRX m_manipulatorMotor; // we should probably change these names once we learn more
   private double intakeConeSpeed = .5;
-  private double intakeCubeSpeed = -.5;
   private double outtakeConeSpeed = -.5;
-  private double outtakeCubeSpeed = .5;
-  private String intakeMode = "";
-
 
   public Manipulator() {
     m_manipulatorMotor = new WPI_TalonSRX(Constants.CAN.intakeMotor);
@@ -27,58 +22,28 @@ public class Manipulator extends SubsystemBase {
     m_manipulatorMotor.setInverted(false);
   }
 
-  public void runMotor(double newSpeed) {
-      m_manipulatorMotor.set(ControlMode.PercentOutput, newSpeed);
-  }
-
   public void intakeCone() {
-      runMotor(intakeConeSpeed);
-  }
-  public void intakeCube() {
-      runMotor(intakeCubeSpeed);
+      m_manipulatorMotor.set(ControlMode.PercentOutput, intakeConeSpeed);
   }
 
   public void outtakeCone() {
-      runMotor(outtakeConeSpeed);
-  }
-
-  public void outtakeCube() {
-      runMotor(outtakeCubeSpeed);
+      m_manipulatorMotor.set(ControlMode.PercentOutput, outtakeConeSpeed);
   }
   
   public double getSpeedIntakeCone() {
       return intakeConeSpeed;
   }
 
-  public double getSpeedIntakeCube() {
-      return intakeCubeSpeed;
-  }
-
   public double getSpeedOuttakeCone() {
       return outtakeConeSpeed;
-  }
-
-  public double getSpeedOuttakeCube() {
-      return outtakeCubeSpeed;
-  }
-  public String getIntakeMode() {
-      return intakeMode;
   }
 
   public void setSpeedIntakeCone(double x) {
       intakeConeSpeed = x;
   }
 
-  public void setSpeedIntakeCube(double x) {
-      intakeCubeSpeed = x;
-  }
-
   public void setSpeedOuttakeCone(double x) {
       outtakeConeSpeed = x;
-  }
-
-  public void setSpeedOuttakeCube(double x) {
-      outtakeCubeSpeed = x;
   }
 
   public void StopManipulator() {
@@ -90,16 +55,13 @@ public class Manipulator extends SubsystemBase {
   }
 
   @Override
-  public void initSendable(SendableBuilder builder) {
-      builder.addDoubleProperty("Motor Speed: Intake Cone", this::getSpeedIntakeCone, this::setSpeedIntakeCone);
-      builder.addDoubleProperty("Motor Speed: Intake Cube", this::getSpeedIntakeCube, this::setSpeedIntakeCube);
-      builder.addDoubleProperty("Motor Speed: Outtake Cone", this::getSpeedOuttakeCone, this::setSpeedOuttakeCone);
-      builder.addDoubleProperty("Motor Speed: Outtake Cube", this::getSpeedOuttakeCube, this::setSpeedOuttakeCube);
-      builder.addStringProperty("Intake Mode", this::getIntakeMode, null);
-  }
-
-  @Override
   public void simulationPeriodic() {
 
   }
+  @Override
+  public void initSendable(SendableBuilder builder) {
+    builder.addDoubleProperty("Motor Speed: Intake Cone", this::getSpeedIntakeCone, this::setSpeedIntakeCone);
+    builder.addDoubleProperty("Motor Speed: Outtake Cone", this::getSpeedOuttakeCone, this::setSpeedOuttakeCone);
+  }
+
 }
