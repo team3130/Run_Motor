@@ -33,7 +33,7 @@ public class Manipulator extends SubsystemBase {
   public void outtakeCube() {
     m_manipulatorMotor.set(ControlMode.PercentOutput, outtakeCubeSpeed);
   }
-  public void IntakeCube() {
+  public void intakeCube() {
     m_manipulatorMotor.set(ControlMode.PercentOutput, intakeCubeSpeed);
   }
   public double getSpeedIntakeCone() {
