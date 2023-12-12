@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.commands.*;
 import frc.robot.commands.extensionarm.AutoZeroExtensionArm;
 import frc.robot.commands.framework.Autos;
+import frc.robot.commands.manipulator.IntakeCube;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Manipulator;
@@ -81,7 +82,7 @@ public class RobotContainer {
     //new POVButton(m_WeaponsGamepad, Constants.XBOXButtons.LST_POV_N).whileTrue(new DumbExtend(m_extension, this));
     //new POVButton(m_WeaponsGamepad, Constants.XBOXButtons.LST_POV_S).whileTrue(new DumbRetract(m_extension, this));
     new JoystickButton(m_WeaponsGamepad, 3).whileTrue(new IntakeCone(getManipulator()));
-    new JoystickButton(m_WeaponsGamepad, 5).whileTrue(new OuttakeCone(getManipulator()));
+    new JoystickButton(m_WeaponsGamepad, 4).whileTrue(new IntakeCube((getManipulator())));
     // ADD BUTTON BINDINGS HERE (Intake Cube: 4 and Outtake Cube: 6)
 
 
