@@ -17,6 +17,7 @@ public class Manipulator extends SubsystemBase {
   private double outtakeConeSpeed = -.5;
   private double outtakeCubeSpeed = .5;
   private double intakeCubeSpeed = -.5;
+  
   public Manipulator() {
     m_manipulatorMotor = new WPI_TalonSRX(Constants.CAN.intakeMotor);
     m_manipulatorMotor.configFactoryDefault();
