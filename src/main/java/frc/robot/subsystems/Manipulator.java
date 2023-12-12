@@ -12,9 +12,10 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonFX;
 import frc.robot.Constants;
 
 public class Manipulator extends SubsystemBase {
-  private final WPI_TalonSRX m_manipulatorMotor; // we should probably change these names once we learn more
+  private final WPI_TalonSRX m_manipulatorMotor;// we should probably change these names once we learn more
   private double intakeConeSpeed = .5;
   private double outtakeConeSpeed = -.5;
+  private double intakeCubeSpeed = 0.01;
 
   public Manipulator() {
     m_manipulatorMotor = new WPI_TalonSRX(Constants.CAN.intakeMotor);
@@ -26,6 +27,14 @@ public class Manipulator extends SubsystemBase {
       m_manipulatorMotor.set(ControlMode.PercentOutput, intakeConeSpeed);
   }
 
+  public void intakeCube() {
+    m_manipulatorMotor.set(ControlMode.PercentOutput, intakeCubeSpeed);
+  }
+
+  public void stopCube() {
+    m_manipulatorMotor.set(ControlMode.PercentOutput, 0);
+  }
+
   public void outtakeCone() {
       m_manipulatorMotor.set(ControlMode.PercentOutput, outtakeConeSpeed);
   }
@@ -34,12 +43,19 @@ public class Manipulator extends SubsystemBase {
       return intakeConeSpeed;
   }
 
+  public double getSpeedIntakeCube() {
+    return intakeCubeSpeed;
+  }
   public double getSpeedOuttakeCone() {
       return outtakeConeSpeed;
   }
 
   public void setSpeedIntakeCone(double x) {
       intakeConeSpeed = x;
+  }
+
+  public void setSpeedIntakeCube(double x) {
+    intakeCubeSpeed = x;
   }
 
   public void setSpeedOuttakeCone(double x) {

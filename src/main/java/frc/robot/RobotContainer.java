@@ -21,6 +21,7 @@ import frc.robot.commands.*;
 import frc.robot.commands.extensionarm.AutoZeroExtensionArm;
 import frc.robot.commands.extensionarm.ExtensionExtend;
 import frc.robot.commands.framework.Autos;
+import frc.robot.commands.manipulator.rohanIntakeCube;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Manipulator;
@@ -89,6 +90,7 @@ public class RobotContainer {
     new JoystickButton(m_WeaponsGamepad, 3).whileTrue(new IntakeCone(getManipulator()));
     new JoystickButton(m_WeaponsGamepad, 5).whileTrue(new OuttakeCone(getManipulator()));
     // ADD BUTTON BINDINGS HERE (Intake Cube: 4 and Outtake Cube: 6)
+    new JoystickButton(m_WeaponsGamepad, 4).whileTrue(new rohanIntakeCube(getManipulator()));
 
 
   }
