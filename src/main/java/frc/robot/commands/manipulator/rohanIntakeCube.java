@@ -19,6 +19,7 @@ public class rohanIntakeCube extends CommandBase {
 
   public rohanIntakeCube(Manipulator mManipulatorMotor) {
     m_manipulatorMotor = mManipulatorMotor;
+    addRequirements(mManipulatorMotor);
     timer = new Timer();
   }
 
