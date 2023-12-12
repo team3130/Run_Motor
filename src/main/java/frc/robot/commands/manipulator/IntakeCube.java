@@ -4,15 +4,15 @@
 
 package frc.robot.commands.manipulator;
 
-import frc.robot.subsystems.Manipulator;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.subsystems.Manipulator;
 
 /** An example command that uses an example subsystem. */
-public class OuttakeCone extends CommandBase {
+public class IntakeCube extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final Manipulator m_manipulator;
 
-  public OuttakeCone(Manipulator manipulator) {
+  public IntakeCube(Manipulator manipulator) {
     m_manipulator = manipulator;
     addRequirements(manipulator);
   }
@@ -20,13 +20,13 @@ public class OuttakeCone extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_manipulator.outtakeCone();
+    m_manipulator.intakeCube();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    
+
   }
 
   // Called once the command ends or is interrupted.
