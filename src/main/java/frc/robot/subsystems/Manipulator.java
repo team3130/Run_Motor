@@ -16,6 +16,8 @@ public class Manipulator extends SubsystemBase {
   private double intakeConeSpeed = .5;
   private double outtakeConeSpeed = -.5;
 
+  private double intakeCubeSpeed = .5;
+
   public Manipulator() {
     m_manipulatorMotor = new WPI_TalonSRX(Constants.CAN.intakeMotor);
     m_manipulatorMotor.configFactoryDefault();
@@ -29,6 +31,11 @@ public class Manipulator extends SubsystemBase {
   public void outtakeCone() {
       m_manipulatorMotor.set(ControlMode.PercentOutput, outtakeConeSpeed);
   }
+
+  public void intakeCube() {
+    m_manipulatorMotor.set(ControlMode.PercentOutput, outtakeConeSpeed);
+  }
+
   
   public double getSpeedIntakeCone() {
       return intakeConeSpeed;
@@ -36,6 +43,10 @@ public class Manipulator extends SubsystemBase {
 
   public double getSpeedOuttakeCone() {
       return outtakeConeSpeed;
+  }
+
+  public void setSpeedIntakeCube(double x) {
+     intakeCubeSpeed = x;
   }
 
   public void setSpeedIntakeCone(double x) {
