@@ -21,13 +21,11 @@ import frc.robot.commands.*;
 import frc.robot.commands.extensionarm.AutoZeroExtensionArm;
 import frc.robot.commands.extensionarm.ExtensionExtend;
 import frc.robot.commands.framework.Autos;
-import frc.robot.subsystems.Chassis;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Manipulator;
+import frc.robot.commands.manipulator.UmarSpin;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.subsystems.ExtensionArm;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -41,6 +39,7 @@ public class RobotContainer {
   private final Chassis m_chassis = new Chassis();
   private final Manipulator m_manipulator = new Manipulator();
   private final ExtensionArm m_extension = new ExtensionArm();
+  public final UmarWheel m_subsystem = new UmarWheel();
   public static XboxController m_DriverGamepad = new XboxController(0);
   public static Joystick m_WeaponsGamepad = new Joystick(1);
 
@@ -88,6 +87,7 @@ public class RobotContainer {
     //new POVButton(m_WeaponsGamepad, Constants.XBOXButtons.LST_POV_S).whileTrue(new DumbRetract(m_extension, this));
     new JoystickButton(m_WeaponsGamepad, 3).whileTrue(new IntakeCone(getManipulator()));
     new JoystickButton(m_WeaponsGamepad, 5).whileTrue(new OuttakeCone(getManipulator()));
+    new JoystickButton(m_WeaponsGamepad, 4).whileTrue(new UmarSpin(m_subsystem));
     // ADD BUTTON BINDINGS HERE (Intake Cube: 4 and Outtake Cube: 6)
 
 
