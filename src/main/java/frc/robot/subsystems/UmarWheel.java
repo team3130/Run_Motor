@@ -33,7 +33,7 @@ public class UmarWheel extends SubsystemBase {
   }
 
   public double getSpeedIntakeCube(){
-    return m_motor.getSelectedSensorVelocity();
+    return speedIntakeCube;
   }
 
   public void setSpeedIntakeCube(double newSpeedIntakeCube){
