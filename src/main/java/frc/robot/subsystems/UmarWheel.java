@@ -9,19 +9,18 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.util.sendable.SendableBuilder;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class UmarWheel extends SubsystemBase {
   /** Creates a new ExampleSubsystem. */
 
   private final WPI_TalonSRX m_motor;
-
-  private final int CANID = 1;
-
-  public double speedIntakeCube = 0.5;
+  public double speedIntakeCube = -0.5;
 
   public UmarWheel() {
-    m_motor = new WPI_TalonSRX(CANID);
+    m_motor = new WPI_TalonSRX(Constants.CAN.intakeMotor);
     m_motor.configFactoryDefault();
+    m_motor.setInverted(false);
   }
 
   public void runMotor(){
