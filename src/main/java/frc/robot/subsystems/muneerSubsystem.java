@@ -4,18 +4,57 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
-public class ExampleSubsystem extends SubsystemBase {
+public class muneerSubsystem extends SubsystemBase {
+  private final WPI_TalonSRX m_muneerMotor;
+  private double intakeCubeSpeed = -0.4;
+  private double outtakeCubeSpeed = 0.6;
   /** Creates a new ExampleSubsystem. */
-  public ExampleSubsystem() {}
+  public muneerSubsystem() {
+    m_muneerMotor = new WPI_TalonSRX(Constants.CAN.intakeMotor);
+    m_muneerMotor.configFactoryDefault();
+    m_muneerMotor.setInverted(false);
+  }
 
   /**
    * Example command factory method.
    *
    * @return a command
    */
+  public void intakeCube() {
+    m_muneerMotor.set(ControlMode.PercentOutput, intakeCubeSpeed);
+  }
+
+  public void outtakeCube() {
+    m_muneerMotor.set(ControlMode.PercentOutput, outtakeCubeSpeed);
+  }
+
+  public void StopManipulator() {
+    m_muneerMotor.set(ControlMode.PercentOutput, 0);
+  }
+
+  public double getSpeedIntakeCube() {
+    return intakeCubeSpeed;
+  }
+
+  public double getSpeedouttakeCube() {
+    return outtakeCubeSpeed;
+  }
+
+  public void setSpeedIntakeCube(double x) {
+    intakeCubeSpeed = x;
+  }
+
+  public void setSpeedouttakeCube(double x) {
+    outtakeCubeSpeed = x;
+  }
+
+
   public CommandBase exampleMethodCommand() {
     // Inline construction of command goes here.
     // Subsystem::RunOnce implicitly requires `this` subsystem.

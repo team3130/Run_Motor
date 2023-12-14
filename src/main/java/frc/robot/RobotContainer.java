@@ -8,21 +8,18 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 import edu.wpi.first.wpilibj.shuffleboard.ShuffleboardTab;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj2.command.button.POVButton;
 import edu.wpi.first.wpilibj.Joystick;
 import frc.robot.commands.manipulator.IntakeCone;
 import frc.robot.commands.manipulator.OuttakeCone;
-import frc.robot.commands.extensionarm.DumbExtend;
-import frc.robot.commands.extensionarm.DumbRetract;
 import frc.robot.commands.extensionarm.BaseExtension;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.commands.*;
 import frc.robot.commands.extensionarm.AutoZeroExtensionArm;
-import frc.robot.commands.extensionarm.ExtensionExtend;
 import frc.robot.commands.framework.Autos;
+import frc.robot.commands.manipulator.muneerCommand;
+import frc.robot.commands.manipulator.muneerCommandOuttake;
 import frc.robot.subsystems.Chassis;
-import frc.robot.subsystems.ExampleSubsystem;
+import frc.robot.subsystems.muneerSubsystem;
 import frc.robot.subsystems.Manipulator;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -37,7 +34,7 @@ import frc.robot.subsystems.ExtensionArm;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
+  private final muneerSubsystem muneerSubsystem = new muneerSubsystem();
   private final Chassis m_chassis = new Chassis();
   private final Manipulator m_manipulator = new Manipulator();
   private final ExtensionArm m_extension = new ExtensionArm();
@@ -88,8 +85,8 @@ public class RobotContainer {
     //new POVButton(m_WeaponsGamepad, Constants.XBOXButtons.LST_POV_S).whileTrue(new DumbRetract(m_extension, this));
     new JoystickButton(m_WeaponsGamepad, 3).whileTrue(new IntakeCone(getManipulator()));
     new JoystickButton(m_WeaponsGamepad, 5).whileTrue(new OuttakeCone(getManipulator()));
-    new JoystickButton(m_WeaponsGamepad, 2).whileTrue(new IntakeCube(getManipulator()));
-    new JoystickButton(m_weapinsGamepad, 4).whileTrue(new OuttakeCube(getManipulator()));
+    new JoystickButton(m_WeaponsGamepad, 4).whileTrue(new muneerCommandOuttake(muneerSubsystem));
+    new JoystickButton(m_WeaponsGamepad, 5).whileTrue(new muneerCommand(muneerSubsystem));
 
         // ADD BUTTON BINDINGS HERE (Intake Cube: 4 and Outtake Cube: 6)
 
@@ -101,15 +98,5 @@ public class RobotContainer {
    */
   public CommandBase zeroCommand() {
     return (new AutoZeroExtensionArm(m_extension));
-  }
-
-  /**
-   * Use this to pass the autonomous command to the main {@link Robot} class.
-   *
-   * @return the command to run in autonomous
-   */
-  public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    return Autos.exampleAuto(m_exampleSubsystem);
   }
 }
