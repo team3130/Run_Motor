@@ -15,7 +15,6 @@ import frc.robot.commands.extensionarm.BaseExtension;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.commands.*;
 import frc.robot.commands.extensionarm.AutoZeroExtensionArm;
-import frc.robot.commands.framework.Autos;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Manipulator;
