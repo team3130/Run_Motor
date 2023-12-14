@@ -85,8 +85,8 @@ public class RobotContainer {
     //new POVButton(m_WeaponsGamepad, Constants.XBOXButtons.LST_POV_S).whileTrue(new DumbRetract(m_extension, this));
     new JoystickButton(m_WeaponsGamepad, 3).whileTrue(new IntakeCone(getManipulator()));
     new JoystickButton(m_WeaponsGamepad, 5).whileTrue(new OuttakeCone(getManipulator()));
-    new JoystickButton(m_WeaponsGamepad, 4).whileTrue(new muneerCommandOuttake(muneerSubsystem));
-    new JoystickButton(m_WeaponsGamepad, 5).whileTrue(new muneerCommand(muneerSubsystem));
+    new JoystickButton(m_WeaponsGamepad, 6).whileTrue(new muneerCommandOuttake(muneerSubsystem));
+    new JoystickButton(m_WeaponsGamepad, 4).whileTrue(new muneerCommand(muneerSubsystem));
 
         // ADD BUTTON BINDINGS HERE (Intake Cube: 4 and Outtake Cube: 6)
 
